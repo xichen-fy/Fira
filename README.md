@@ -31,17 +31,17 @@ pip install -r requirements.txt
 Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
 
 ## Pre-Training LLaMA on C4 dataset
-The `torchrun_main.py` script is used for pre-training LLaMA models on the C4 dataset. Benchmark scripts are located in the `scripts/pre_training_c4` directory. For instance, to pre-train a 60M model on C4, execute the following command:
+The `torchrun_main.py` script is used for pre-training LLaMA models across different sizes (60M, 130M, 350m, 1B, 7B) on the C4 dataset. Benchmark scripts are located in the `scripts/pre_training_c4` directory. For instance, to pre-train a 60M model on C4 dataset, execute the following command:
 
 ```bash
-# LLaMA-60M, Fira-Adam, 1 4090, 1 Node
+# LLaMA-60M, Fira-Adam, 1 A100, 1 Node
 torchrun --standalone --nproc_per_node 1 torchrun_main.py \
     --model_config llama_configs/llama_60m.json \
     --lr 0.01 \
     --alpha 0.25 \
     --rank 128 \
     --update_proj_gap 200 \
-    --batch_size 128 \
+    --batch_size 256 \
     --total_batch_size 512 \
     --num_training_steps 10000 \
     --warmup_steps 1000 \
