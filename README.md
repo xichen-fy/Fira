@@ -16,9 +16,9 @@ Different from LoRA and Galore, we realize training with full-rank gradients of 
 
 ## TODOs
 
-- [ ] Release the pra-training code
-- [ ] Release the fine-tuning code
-- [ ] Package our Fira into a Python library  for easy use
+- [ ] Release the pra-training code (in 3 days)
+- [ ] Release the fine-tuning code (in 3 days)
+- [ ] Package our Fira into a Python library for easy use
 
 
 
