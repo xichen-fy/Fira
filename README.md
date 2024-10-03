@@ -34,7 +34,7 @@ Different from LoRA and Galore, we realize training with full-rank gradients of 
 
 
 
-## Fine-Tuning LLaMA on commensense reasoning tasks
+## Fine-Tuning LLaMA
 
 
 
