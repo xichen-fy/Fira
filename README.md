@@ -53,10 +53,11 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
 ```
 Script training is directly connected to [huggingface](https://huggingface.co/). C4 datasets may not be directly connected using mirror sites. Tutorials for downloading local datasets for training will be uploaded soon!
 
-### Performance under varying ranks
+<!-- ### Performance under varying ranks
 Assess the performance of Fira under varying ranks by pre-training the LLaMA 60M model on the C4 dataset ($d_{model}=256$, i.e., the full-rank dimension of models).
-![alt text](assests/varying_ranks.png)
-Notably, even when the ranks are set very low (4 and 16), Fira still achieves performance comparable to full-rank training. In contrast, the performance of GaLore significantly declines in these cases. These results highlight the superiority of our proposed Fira at lower ranks and its effectiveness in reducing memory usage ($r \propto M$, where $M$ is the memory usage of optimizer states).
+![](./assests/varying_ranks.png)
+
+Notably, even when the ranks are set very low (4 and 16), Fira still achieves performance comparable to full-rank training. In contrast, the performance of GaLore significantly declines in these cases. These results highlight the superiority of our proposed Fira at lower ranks and its effectiveness in reducing memory usage ($r \propto M$, where $M$ is the memory usage of optimizer states). -->
 
 ## Fine-Tuning LLaMA
 
