@@ -87,10 +87,10 @@ class AdamW(Optimizer):
                 if "step" not in state:
                     state["step"] = 0
                                     
-                # GaLore Projection
+                # Gradient Projection
                 if "rank" in group:
                     if "projector" not in state:
-                        state["projector"] = GaLoreProjector(group["rank"], update_proj_gap=group["update_proj_gap"], alpha=group["alpha"], proj_type=group["proj_type"])
+                        state["projector"] = GradientProjector(group["rank"], update_proj_gap=group["update_proj_gap"], alpha=group["alpha"], proj_type=group["proj_type"])
                     grad = state["projector"].project(grad, state["step"])
 
                 # State initialization
@@ -120,7 +120,7 @@ class AdamW(Optimizer):
                 # compute norm gradient
                 norm_grad = exp_avg / denom
                 
-                # GaLore Projection Back
+                # Gradient Projection Back
                 if "rank" in group:
                     norm_grad = state["projector"].project_back(norm_grad)
                 

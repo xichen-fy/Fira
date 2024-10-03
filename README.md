@@ -24,19 +24,45 @@ Different from LoRA and Galore, we realize training with full-rank gradients of 
 
 ## Usage
 
-
-
-
+### Set up the environment
+```bash
+pip install -r requirements.txt
+```
+Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
 
 ## Pre-Training LLaMA on C4 dataset
+`torchrun_main.py` is the main script for pre-training LLaMA models on C4 dataset. Benchmark scripts can be found in `scripts/pre_training_c4` folder.
+For example, to pre-train a 60m model on C4, run the following script:
 
+```bash
+# LLaMA-60M, Fira-Adam, 1 4090, 1 Node
+torchrun --standalone --nproc_per_node 1 torchrun_main.py \
+    --model_config llama_configs/llama_60m.json \
+    --lr 0.01 \
+    --alpha 0.25 \
+    --rank 128 \
+    --update_proj_gap 200 \
+    --batch_size 128 \
+    --total_batch_size 512 \
+    --num_training_steps 10000 \
+    --warmup_steps 1000 \
+    --weight_decay 0 \
+    --dtype bfloat16 \
+    --eval_every 1000 \
+    --optimizer fira_adamw 
+```
+Script training is directly connected to [huggingface](https://huggingface.co/). C4 datasets may not be directly connected using mirror sites. Tutorials for downloading local datasets for training will be uploaded soon!
 
-
-
+### Performance under varying ranks
+Assess the performance of Fira under varying ranks by pre-training the LLaMA 60M model on the C4 dataset ($d_{model}=256$, i.e., the full-rank dimension of models).
+![alt text](assests/varying_ranks.png)
+Notably, even when the ranks are set very low (4 and 16), Fira still achieves performance comparable to full-rank training. In contrast, the performance of GaLore significantly declines in these cases. These results highlight the superiority of our proposed Fira at lower ranks and its effectiveness in reducing memory usage ($r \propto M$, where $M$ is the memory usage of optimizer states).
 
 ## Fine-Tuning LLaMA
 
-
+## Acknowledgement
+This implementation is based on code from several repositories.
+* [Galore](https://github.com/jiaweizzhao/GaLore)
 
 
 
