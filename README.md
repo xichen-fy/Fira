@@ -12,6 +12,7 @@ We introduce Fira, a plug-and-play memory-efficient training framework of LLMs.
 
 Different from LoRA and Galore, we realize training with full-rank gradients of full-rank weights, constituting the first attempt to achieve full-rank training consistently under the low-rank constraint.
 
+Our method is easy to implement, basically relying on just two lines of equations.
 
 
 ## TODOs
