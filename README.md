@@ -31,8 +31,7 @@ pip install -r requirements.txt
 Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
 
 ## Pre-Training LLaMA on C4 dataset
-`torchrun_main.py` is the main script for pre-training LLaMA models on C4 dataset. Benchmark scripts can be found in `scripts/pre_training_c4` folder.
-For example, to pre-train a 60m model on C4, run the following script:
+The `torchrun_main.py` script is used for pre-training LLaMA models on the C4 dataset. Benchmark scripts are located in the `scripts/pre_training_c4` directory. For instance, to pre-train a 60M model on C4, execute the following command:
 
 ```bash
 # LLaMA-60M, Fira-Adam, 1 4090, 1 Node
@@ -51,7 +50,7 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
     --eval_every 1000 \
     --optimizer fira_adamw 
 ```
-Script training is directly connected to [huggingface](https://huggingface.co/). C4 datasets may not be directly connected using mirror sites. Tutorials for downloading local datasets for training will be uploaded soon!
+Script training is directly connected to [huggingface](https://huggingface.co/). C4 datasets may not be directly connected using mirror sites. Tutorials for downloading and training using a local dataset will be uploaded soon!
 
 <!-- ### Performance under varying ranks
 Assess the performance of Fira under varying ranks by pre-training the LLaMA 60M model on the C4 dataset ($d_{model}=256$, i.e., the full-rank dimension of models).
