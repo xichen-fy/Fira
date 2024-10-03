@@ -3,7 +3,7 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
     --model_config llama_configs/llama_1b.json \
     --lr 0.01 \
     --alpha 0.0625 \
-    --rank 64 \
+    --rank 512 \
     --update_proj_gap 200 \
     --batch_size 64 \
     --total_batch_size 512 \
