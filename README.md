@@ -31,8 +31,6 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 `./fine_tuning_commonsense_reasoning` includes the code for fine-tuning LLaMA-7B with Fira on the commonsense reasoning tasks.
 
-## Fine-Tuning LLaMA
-
 ## Acknowledgement
 This implementation is based on code from several repositories.
 * [Galore](https://github.com/jiaweizzhao/GaLore)

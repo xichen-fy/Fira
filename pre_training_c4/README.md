@@ -9,7 +9,7 @@ Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
 ### Code Structure
 `./torchrun_main.py` script is used for pre-training LLaMA models across different sizes (60M, 130M, 350m, 1B, 7B) on the C4 dataset. 
 
-`./scripts/pre_training_c4` directory stores the benchmark scripts.
+`./scripts` directory stores the benchmark scripts.
 
 ### Pre-training
 For instance, to pre-train a 60M model on C4 dataset, execute the following command:
