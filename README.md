@@ -31,6 +31,7 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 ### Set up the environment
 ```bash
+cd pre_training_c4
 pip install -r requirements.txt
 ```
 Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
@@ -63,7 +64,7 @@ Script directly accesses the [huggingface](https://huggingface.co/) to load the 
 
 C4 dataset may not be compatible with mirror sites. Tutorials for downloading and training using a local dataset will be uploaded soon!
 
-## fine-tuning LLaMA-7B
+## Fine-tuning LLaMA-7B
 
 `./fine_tuning` includes the code for fine-tuning LLaMA-7B with Fira.
 
