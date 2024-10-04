@@ -26,7 +26,10 @@ from peft_pretraining.dataloader import PreprocessedIterableDataset
 from peft_pretraining.modeling_llama import LlamaForCausalLM
 
 import bitsandbytes as bnb
-from ..optimizer_torch import FiraAdamW, GaLoreAdamW 
+
+import sys
+sys.path.append("..")
+from optimizer_torch import FiraAdamW, GaLoreAdamW 
 
 transformers.logging.set_verbosity_error()
 
