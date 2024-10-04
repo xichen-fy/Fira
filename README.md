@@ -29,7 +29,7 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 `./pre_training_c4` includes the code for pre-training LLaMA models across different sizes (60M, 130M, 350m, 1B, 7B) on the C4 dataset.
 
-`./fine_tuning_commonsense_reasoning` includes the code for fine-tuning LLaMA-7B with Fira on the commonsense reasoning tasks.
+`./fine_tuning` includes the code for fine-tuning LLaMA-7B with Fira.
 
 ## Acknowledgement
 This implementation is based on code from several repositories.
