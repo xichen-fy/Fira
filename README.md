@@ -20,6 +20,7 @@ Our method is easy to implement, basically relying on just two lines of equation
 - [x] Release the pra-training code (in 3 days)
 - [ ] Release the fine-tuning code (in 3 days)
 - [ ] Package our Fira into a Python library for easy use
+- [ ] Release the code for quantitative analysis of scaling factor and provide further analysis on it
 
 
 
