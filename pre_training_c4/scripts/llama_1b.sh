@@ -1,5 +1,5 @@
 # LLaMA-1B, Fira-Adam, 8 A100, 1 Node
-torchrun --standalone --nproc_per_node 1 torchrun_main.py \
+torchrun --standalone --nproc_per_node 8 torchrun_main.py \
     --model_config llama_configs/llama_1b.json \
     --lr 0.01 \
     --alpha 0.0625 \
