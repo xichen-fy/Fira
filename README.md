@@ -72,8 +72,7 @@ C4 dataset may not be compatible with mirror sites. Tutorials for downloading an
 ## Acknowledgement
 This implementation is based on code from several repositories.
 * [Galore](https://github.com/jiaweizzhao/GaLore)
-
-
+* [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters/blob/main/ft-training_set/commonsense_170k.json)
 
 ## Citation
 
