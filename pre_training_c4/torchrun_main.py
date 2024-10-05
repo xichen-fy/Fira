@@ -299,6 +299,8 @@ def main(args):
         optimizer = GaLoreAdamW(param_groups, lr=args.lr, weight_decay=args.weight_decay)
     elif args.optimizer.lower() == "galore_rmsprop":
         optimizer = GaLoreRMSProp(param_groups, lr=args.lr, weight_decay=args.weight_decay)
+    elif args.optimizer.lower() == "rmsprop":
+        optimizer = torch.optim.RMSprop(trainable_params, lr=args.lr, weight_decay=args.weight_decay)
     # implement sgd
     elif args.optimizer.lower() == "sgd":
         optimizer = torch.optim.SGD(trainable_params, lr=args.lr, weight_decay=args.weight_decay, momentum=args.beta1)
