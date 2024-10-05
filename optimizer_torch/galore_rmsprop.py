@@ -11,7 +11,7 @@ from transformers.utils.versions import require_version
 
 from .gradient_projection import GradientProjector
 
-class RMSPropWithProjection(Optimizer):
+class RMSProp(Optimizer):
     """
     Implements RMSProp algorithm with optional gradient projection.
 
@@ -36,7 +36,7 @@ class RMSPropWithProjection(Optimizer):
         self,
         params: Iterable[nn.parameter.Parameter],
         lr: float = 1e-3,
-        beta: float = 0.99,
+        beta: float = 0.9,
         eps: float = 1e-6,
         weight_decay: float = 0.0,
         momentum: float = 0.0,
@@ -140,7 +140,8 @@ class RMSPropWithProjection(Optimizer):
                 # Gradient Projection Back
                 if "rank" in group:
                     norm_grad = state["projector"].project_back(norm_grad)
-                
+
+                step_size = group["lr"]
                 p.add_(norm_grad, alpha=-step_size)
 
         return loss
