@@ -88,7 +88,7 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
 ### Notice
 Script directly accesses [huggingface](https://huggingface.co/) to load the dataset. Ensure a stable internet connection is available.
 
-C4 dataset may not be compatible with mirror sites. Tutorials for downloading and training using a local dataset will be uploaded soon!
+C4 dataset may not be compatible with mirror sites. Tutorials for downloading and training using a local dataset are provided in `./download_use_c4`
 
 ## Fine-tuning LLaMA-7B
 
