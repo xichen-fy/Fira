@@ -41,18 +41,18 @@ CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
 CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
     --model LLaMA-7B \
     --adapter LoRA \
-    --dataset ARC-Challenge \
-    --batch_size 1 \
-    --base_model 'yahma/llama-7b-hf' \
-    --lora_weights './result/fira' | tee -a './result/fira/ARC-Challenge.txt'
-
-CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
-    --model LLaMA-7B \
-    --adapter LoRA \
     --dataset ARC-Easy \
     --batch_size 1 \
     --base_model 'yahma/llama-7b-hf' \
     --lora_weights './result/fira' | tee -a './result/fira/ARC-Easy.txt'
+
+CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
+    --model LLaMA-7B \
+    --adapter LoRA \
+    --dataset ARC-Challenge \
+    --batch_size 1 \
+    --base_model 'yahma/llama-7b-hf' \
+    --lora_weights './result/fira' | tee -a './result/fira/ARC-Challenge.txt'
 
 CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
     --model LLaMA-7B \

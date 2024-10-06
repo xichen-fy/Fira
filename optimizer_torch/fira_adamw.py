@@ -137,7 +137,7 @@ class AdamW(Optimizer):
                     if "scaling_grad" in state:
                         scaling_grad_norm = torch.norm(scaling_grad)
                         limiter = max(
-                                torch.norm(scaling_grad) / 
+                                scaling_grad_norm / 
                                 (state["scaling_grad"] + 1e-8),
                                 1.01,
                             ) / 1.01

@@ -14,8 +14,6 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py \
   --lora_alpha 64 \
   --use_gradient_checkpointing \
   --target_modules '["q_proj", "k_proj", "v_proj", "up_proj", "down_proj"]' \
-  --p_rank 16 \
-  --update_proj_gap 200 \
-  --save_step 10000 \
+  --save_step 15000 \
   --eval_step 1000 \
   --optimizer_name fira_adamw 

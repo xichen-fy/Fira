@@ -26,6 +26,15 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 ## Usage
 
+### Install 
+```bash
+pip install fira
+```
+If you set up the mirror:  
+```bash
+pip install fira -i https://pypi.org/simple
+```
+
 ## Pre-training LLaMA (60M-7B) on the C4 dataset
 
 `./pre_training_c4` includes the code for pre-training LLaMA models on the C4 dataset.
@@ -72,7 +81,7 @@ C4 dataset may not be compatible with mirror sites. Tutorials for downloading an
 ## Acknowledgement
 This implementation is based on code from several repositories.
 * [Galore](https://github.com/jiaweizzhao/GaLore)
-* [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters/blob/main/ft-training_set/commonsense_170k.json)
+* [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters)
 
 ## Citation
 

@@ -26,10 +26,6 @@ from peft import (  # noqa: E402
 )
 from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaTokenizer, AutoModel  # noqa: F402
 
-import sys
-sys.path.append("..")
-from optimizer_torch import FiraAdamW, GaLoreAdamW 
-
 def train(
         # model/data params
         base_model: str = "",  # the only required argument
@@ -54,9 +50,9 @@ def train(
         lora_target_modules: List[str] = None,
         # optimizer hyperparams
         optimizer_name: str = "adam",
-        p_rank: int = 128,
+        p_rank: int = 16,
         update_proj_gap: int = 200,
-        scale: float = 1.0,
+        alpha: float = 1.0,
         proj_type: str = "std",
         # bottleneck adapter hyperparams
         bottleneck_size: int = 256,
@@ -97,7 +93,7 @@ def train(
         f"optimizer_name: {optimizer_name}\n"
         f"p_rank: {p_rank}\n"
         f"update_proj_gap: {update_proj_gap}\n"
-        f"scale: {scale}\n"
+        f"alpha: {alpha}\n"
         f"proj_type: {proj_type}\n"
         f"bottleneck_size: {bottleneck_size}\n"
         f"non_linearity: {non_linearity}\n"
@@ -285,7 +281,10 @@ def train(
         model.is_parallelizable = True
         model.model_parallel = True
 
-    
+    import sys
+    sys.path.append("..")
+    from optimizer_torch import FiraAdamW, GaLoreAdamW    
+
     if any(word in optimizer_name.lower() for word in ['fira', 'galore']):
         # make parameters with "rank" to a single group, if param_name has "mlp" or "attn"
         gradient_projection_params = []
@@ -304,7 +303,7 @@ def train(
         # make parameters without "rank" to another group
         regular_params = [p for p in model.parameters() if id(p) not in id_gradient_projection_params]
         param_groups = [{'params': regular_params},
-                        {'params': gradient_projection_params, 'rank': p_rank, 'update_proj_gap': update_proj_gap, 'scale': scale, 'proj_type': proj_type}]
+                        {'params': gradient_projection_params, 'rank': p_rank, 'update_proj_gap': update_proj_gap, 'alpha': alpha, 'proj_type': proj_type}]
         
     if optimizer_name.lower() == "adam":
         trainable_params = [p for p in model.parameters() if p.requires_grad]
@@ -322,6 +321,7 @@ def train(
         model=model,
         train_dataset=train_data,
         eval_dataset=val_data,
+        optimizers=(optimizer, None),
         args=transformers.TrainingArguments(
             per_device_train_batch_size=micro_batch_size,
             gradient_accumulation_steps=gradient_accumulation_steps,
