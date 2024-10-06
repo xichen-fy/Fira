@@ -104,7 +104,7 @@ for epoch in range(1, 6):  # 5 epochs
 ```
 
 ### Result
-In Fira, Adam is used by default with `weight_decay=0`. Thus, we compare with the full-rank Adam optimiser at the same learning rate. 
+In Fira, Adam is used by default with `weight_decay=0`. Thus, we compare low-rank Fira with the full-rank Adam optimiser at the same learning rate. 
 
 #### Fira ($rank/d_{model}=8/128$)
 ```python
