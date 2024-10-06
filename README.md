@@ -37,7 +37,7 @@ pip install fira -i https://pypi.org/simple
 
 ### Example
 
-```bash
+```python
 from fira import FiraAdamW, divide_params
 param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8, update_proj_gap=200, alpha=1.0, proj_type='std')
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
@@ -49,7 +49,7 @@ Using the Fira optimizer involves two steps:
 ### Notice
 Adam is utilized by default with `weight_decay=0` in AdamW.
 If you want to enable weight decay, setting as follows:
-```bash
+```python
 optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
 
