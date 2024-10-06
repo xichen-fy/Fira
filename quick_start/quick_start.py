@@ -2,10 +2,20 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 import argparse
+import random
+
+# Set random seed for reproducibility
+def seed_torch(seed=1029):
+    random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)  # if you are using multi-GPU.
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--optimizer', type=str, default='adam', help='Optimizer to use')
+    parser.add_argument('--optimizer', type=str, default='fira_adamw', help='Optimizer to use')
     return parser.parse_args()
 
 class SimpleNN(nn.Module):
@@ -48,6 +58,7 @@ def test(model, test_loader, criterion):
     print(f'\nTest set: Average loss: {test_loss:.4f}, Accuracy: {correct}/{len(test_loader.dataset)} ({accuracy:.2f}%)\n')
 
 def main():
+    seed_torch() # Set random seed for reproducibility
     args = parse_args()
 
     from torchvision import datasets, transforms
@@ -72,8 +83,10 @@ def main():
     param_groups = divide_params(model, target_modules_list=["Linear"], rank=8)  # Group parameters
     if args.optimizer == "fira_adamw":
         optimizer = FiraAdamW(param_groups, lr=0.01)  # Use FiraAdamW optimizer
-    else:
+    elif args.optimizer == "adam":
         optimizer = optim.Adam(model.parameters(), lr=0.01)  # Use Adam optimizer
+    elif args.optimizer == "adamw":
+        optimizer = optim.AdamW(model.parameters(), lr=0.01) # Use AdamW optimizer
 
     # Run the training and testing loop
     for epoch in range(1, 6):  # 5 epochs
