@@ -51,7 +51,7 @@ optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
 
 
-## Pre-training LLaMA (60M-7B) on the C4 dataset
+## Pre-training LLaMA (60M~7B) on the C4 dataset
 
 `./pre_training_c4` includes the code for pre-training LLaMA models on the C4 dataset.
 
