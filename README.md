@@ -88,7 +88,7 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
 ### Notice
 This script directly accesses [huggingface](https://huggingface.co/) to load the C4 dataset, so please ensure a stable internet connection.
 
-Alternatively, you can refer to the tutorials in ./download_use_c4 for using a local dataset.
+Alternatively, you can refer to the tutorials in `./download_use_c4` for using a local dataset.
 
 ## Fine-tuning LLaMA-7B
 
