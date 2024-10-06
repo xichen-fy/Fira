@@ -18,8 +18,8 @@ Our method is easy to implement, basically relying on just two lines of equation
 ## TODOs
 
 - [x] Release the pra-training code (in 3 days)
-- [ ] Release the fine-tuning code (in 3 days)
-- [ ] Package our Fira into a Python library for easy use
+- [x] Release the fine-tuning code (in 3 days)
+- [x] Package our Fira into a Python library for easy use
 - [ ] Release the code for quantitative analysis of scaling factor and provide further analysis on it
 
 
@@ -34,6 +34,26 @@ If you set up the mirror:
 ```bash
 pip install fira -i https://pypi.org/simple
 ```
+
+### Example
+
+```bash
+from fira import FiraAdamW, divide_params
+param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8, update_proj_gap=200, alpha=1.0, proj_type='std')
+optimizer = FiraAdamW(param_groups, lr=learning_rate)
+```
+Using the Fira optimizer involves two steps: 
+1\) Use the `divide_params` function to enable Fira memory efficiency for the parameters of the selected modules, while keeping the remaining parameters at their original settings.`target_modules_list` refers to the names of the selected modules, e.g, `Linear`.
+2\)In Fira, `rank` controls the dimension of compression, while `update_proj_gap`, `scale`, and `proj_type` are hyperparameters for gradient projection.
+
+### Notice
+Adam is utilized by default with `weight_decay=0` in AdamW.
+If you want to enable weight decay, setting as follows:
+```bash
+optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
+```
+
+## Quick Start
 
 ## Pre-training LLaMA (60M-7B) on the C4 dataset
 
@@ -77,6 +97,58 @@ C4 dataset may not be compatible with mirror sites. Tutorials for downloading an
 ## Fine-tuning LLaMA-7B
 
 `./fine_tuning` includes the code for fine-tuning LLaMA-7B with Fira.
+
+### Set up the environment
+
+```bash
+cd fine_tuning
+pip install -r requirements.txt
+```
+
+### Download Datasets
+Download commonsense 170k finetuning dataset from [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters/blob/main/ft-training_set/commonsense_170k.json). Then, place it as `./fine_tuning/commonsense_170k.json`. 
+Download full dataset directory from [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters/blob/main/ft-training_set/commonsense_170k.json). Then, place it as `./fine_tuning/dataset`.
+
+### Code Structure
+`./finetune.py` is used for finetuning LLaMA-7B on the commonsense reasoning tasks. 
+`./commonsense_evaluate.py` is used for evaluating the finetuned LLaMA-7B model on 8 sub-tasks of the commonsense reasoning tasks.
+
+### Finetuning
+For instance, to finetuning LLaMA-7B with Fira on the commonsense reasoning tasks by a single GPU, execute the following command:
+```bash
+# LLaMA-7B, Fira-Adam, 1 4090
+CUDA_VISIBLE_DEVICES=0 python finetune.py \
+  --base_model 'yahma/llama-7b-hf' \
+  --data_path 'commonsense_170k.json' \
+  --output_dir './result/fira' \
+  --batch_size 16 \
+  --micro_batch_size 4 \
+  --num_epochs 3 \
+  --learning_rate 1e-4 \
+  --cutoff_len 256 \
+  --val_set_size 120 \
+  --adapter_name lora \
+  --lora_r 32 \
+  --lora_alpha 64 \
+  --use_gradient_checkpointing \
+  --target_modules '["q_proj", "k_proj", "v_proj", "up_proj", "down_proj"]' \
+  --save_step 15000 \
+  --eval_step 1000 \
+  --optimizer_name fira_adamw 
+```
+
+### Evaluating
+For instance, evaluate the finetuned LLaMA-7B model on the BoolQ sub-task:
+```bash
+# LLaMA-7B, Fira-Adam, 1 4090
+CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
+    --model LLaMA-7B \
+    --adapter LoRA \
+    --dataset boolq \
+    --batch_size 1 \
+    --base_model 'yahma/llama-7b-hf' \
+    --lora_weights './result/fira' | tee -a './result/fira/boolq.txt'
+```
 
 ## Acknowledgement
 This implementation is based on code from several repositories.
