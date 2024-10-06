@@ -17,8 +17,8 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 ## TODOs
 
-- [x] Release the pra-training code (in 3 days)
-- [x] Release the fine-tuning code (in 3 days)
+- [x] Release the pra-training code
+- [x] Release the fine-tuning code
 - [x] Package our Fira into a Python library for easy use
 - [ ] Release the code for quantitative analysis of scaling factor and provide further analysis on it
 
