@@ -26,7 +26,7 @@ Our method is easy to implement, basically relying on just two lines of equation
 
 ## Usage
 
-### Install 
+### Install Fira optimizer
 ```bash
 pip install fira
 ```
@@ -39,15 +39,17 @@ param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
 
+### Quick Start
+
+We also provide a quick-start tutorial for the Fira optimizer in `./quick_start`
 
 ### Notice
-Adam is utilized by default with `weight_decay=0` in AdamW.
-If you want to enable weight decay, setting as follows:
+In Fira, Adam is used by default with `weight_decay=0`.
+If you want to enable weight decay for AdamW, set as follows:
 ```python
 optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
 
-## Quick Start
 
 ## Pre-training LLaMA (60M-7B) on the C4 dataset
 
