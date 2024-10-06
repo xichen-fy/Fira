@@ -30,10 +30,6 @@ Our method is easy to implement, basically relying on just two lines of equation
 ```bash
 pip install fira
 ```
-If you set up the mirror:  
-```bash
-pip install fira -i https://pypi.org/simple
-```
 
 ### Example
 
@@ -42,9 +38,7 @@ from fira import FiraAdamW, divide_params
 param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
-Using the Fira optimizer involves two steps: 
-1\) Use the `divide_params` function to enable Fira memory efficiency for the parameters of the selected modules, while keeping the remaining parameters at their original settings.`target_modules_list` refers to the names of the selected modules, e.g, `Linear`. `rank` controls the dimension of compression.
-2\) Initialize Fira as a optimizer.
+
 
 ### Notice
 Adam is utilized by default with `weight_decay=0` in AdamW.
