@@ -41,7 +41,7 @@ optimizer = FiraAdamW(param_groups, lr=learning_rate)
 
 ### Quick Start
 
-We also provide a quick-start tutorial for the Fira optimizer in `./quick_start`
+We also provide a quick-start tutorial for the Fira optimizer. You can find it in `./quick_start`.
 
 ### Notice
 In Fira, Adam is used by default with `weight_decay=0`.
