@@ -39,12 +39,12 @@ pip install fira -i https://pypi.org/simple
 
 ```python
 from fira import FiraAdamW, divide_params
-param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8, update_proj_gap=200, alpha=1.0, proj_type='std')
+param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
 Using the Fira optimizer involves two steps: 
-1\) Use the `divide_params` function to enable Fira memory efficiency for the parameters of the selected modules, while keeping the remaining parameters at their original settings.`target_modules_list` refers to the names of the selected modules, e.g, `Linear`.
-2\)In Fira, `rank` controls the dimension of compression, while `update_proj_gap`, `scale`, and `proj_type` are hyperparameters for gradient projection.
+1\) Use the `divide_params` function to enable Fira memory efficiency for the parameters of the selected modules, while keeping the remaining parameters at their original settings.`target_modules_list` refers to the names of the selected modules, e.g, `Linear`. `rank` controls the dimension of compression.
+2\) Initialize Fira as a optimizer.
 
 ### Notice
 Adam is utilized by default with `weight_decay=0` in AdamW.
