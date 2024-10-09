@@ -51,7 +51,7 @@ optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
 
 
-## Pre-training LLaMA (60M-7B) on the C4 dataset
+## Pre-training LLaMA (60M~7B) on the C4 dataset
 
 `./pre_training_c4` includes the code for pre-training LLaMA models on the C4 dataset.
 
@@ -64,7 +64,7 @@ Our experiment scripts are validated on Python 3.9 with PyTorch 2.2.2.
 
 ### Code Structure
 `./pre_training_c4/torchrun_main.py` script is used for pre-training LLaMA models on the C4 dataset. 
-`./pre_training_c4/scripts` directory stores the benchmark scripts across different LLaMA model sizes (60M, 130M, 350m, 1B, 7B).
+`./pre_training_c4/scripts` directory stores the benchmark scripts across different LLaMA model sizes (60M, 130M, 350M, 1B, 7B).
 
 For instance, to pre-train a 60M model on C4 dataset, execute the following command:
 ```bash
@@ -86,9 +86,9 @@ torchrun --standalone --nproc_per_node 1 torchrun_main.py \
 ```
 
 ### Notice
-Script directly accesses [huggingface](https://huggingface.co/) to load the dataset. Ensure a stable internet connection is available.
+This script directly accesses [huggingface](https://huggingface.co/) to load the C4 dataset, so please ensure a stable internet connection.
 
-C4 dataset may not be compatible with mirror sites. Tutorials for downloading and training using a local dataset are provided in `./download_use_c4`
+Alternatively, you can refer to the tutorials in `./download_use_c4` for using a local dataset.
 
 ## Fine-tuning LLaMA-7B
 
