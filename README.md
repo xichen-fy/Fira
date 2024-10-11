@@ -49,7 +49,7 @@ If you want to enable weight decay for AdamW, set as follows:
 ```python
 optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
-Besides, you can modify the learning rate according to different tasks, with a recommended range of $10^{-5}$ to $10^{-2}$
+Besides, you can modify the learning rate according to different tasks, with a recommended range of $10^{-5}$ to $10^{-2}$.
 
 
 ## Pre-training LLaMA (60M~7B) on the C4 dataset
