@@ -181,9 +181,9 @@ To further explain the effectiveness of our norm-based scaling method, we conduc
     <tr>
         <td>60M</td>
         <td>0.9972</td>
-        <td>1.70e-62</td>
+        <td>2e-62</td>
         <td>0.9662</td>
-        <td>7.25e-26</td>
+        <td>7e-26</td>
         <td>0.9372</td>
         <td>0.0</td>
         <td>0.7942</td>
@@ -192,9 +192,9 @@ To further explain the effectiveness of our norm-based scaling method, we conduc
     <tr>
         <td>130M</td>
         <td>0.9925</td>
-        <td>1.50e-76</td>
+        <td>2e-76</td>
         <td>0.9409</td>
-        <td>8.57e-37</td>
+        <td>9e-37</td>
         <td>0.8698</td>
         <td>0.0</td>
         <td>0.6830</td>
@@ -203,9 +203,9 @@ To further explain the effectiveness of our norm-based scaling method, we conduc
     <tr>
         <td>350M</td>
         <td>0.9770</td>
-        <td>2.76e-113</td>
+        <td>3e-113</td>
         <td>0.8848</td>
-        <td>5.36e-65</td>
+        <td>5e-65</td>
         <td>0.9091</td>
         <td>0.0</td>
         <td>0.7400</td>
@@ -214,9 +214,9 @@ To further explain the effectiveness of our norm-based scaling method, we conduc
     <tr>
         <td>1B</td>
         <td>0.9469</td>
-        <td>1.04e-83</td>
+        <td>1e-83</td>
         <td>0.8249</td>
-        <td>9.77e-57</td>
+        <td>1e-56</td>
         <td>0.8331</td>
         <td>0.0</td>
         <td>0.6513</td>
