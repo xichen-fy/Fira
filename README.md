@@ -148,14 +148,9 @@ CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
 
 ## Further Analysis of Scaling Factor Similarities 
 
-<!-- In our paper, we define the scaling factor $\phi(R)=\frac{||\psi(R)||}{||R||}$, where $R$ is the raw gradient varying in size with rank, and $\psi(R)$ is the gradient corrected by the gradient correction function $\psi$ of the adaptive optimizers (e.g., Adam).
 
-Based on it, we observe an interesting phenomenon during LLM training: the scaling factor remains similar from low-rank to full-rank training. As illustrated in the following figure, if we sort the weight matrices by their average scaling factors, we can obtain a similar rank order.
-![](./assests/scaling_factors.png) -->
-To further explain the effectiveness of our norm-based scaling method, we conduct extensive quantitative analysis of scaling factor similarities between low-rank and full-rank LLMs training. Specifically, we assess scaling factor similarities at both matrix and column level for pre-training LLaMA models ranging from 60M to 1B, averaged over 10,000 steps.
-<!-- <div align="center">
-<img src="./assests/similiar.png" width="80%">
-</div> -->
+To further substantiate our findings of the scaling factor, we conduct more quantitative analysis of scaling factor similarities between low-rank and full-rank LLMs training. Specifically, we assess scaling factor similarities at both matrix and column level for pre-training LLaMA models ranging from 60M to 1B, averaged over 10,000 steps.
+
 <table style="margin: auto; text-align: center; width: 90%">
     <tr>
         <th rowspan="3" style="font-weight: normal;">Size</th>
