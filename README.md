@@ -179,49 +179,50 @@ To further substantiate our findings of the scaling factor, we conduct more quan
     </tr>
     <tr>
         <td>60M</td>
-        <td class="center-text">0.9972</td>
-        <td class="center-text">2e-62</td>
-        <td class="center-text">0.9662</td>
-        <td class="center-text">7e-26</td>
-        <td class="center-text">0.9372</td>
-        <td class="center-text">0.0</td>
-        <td class="center-text">0.7942</td>
-        <td class="center-text">0.0</td>
+        <td style="text-align: center;">0.9972</td>
+        <td style="text-align: center;">2e-62</td>
+        <td style="text-align: center;">0.9662</td>
+        <td style="text-align: center;">7e-26</td>
+        <td style="text-align: center;">0.9372</td>
+        <td style="text-align: center;">0.0</td>
+        <td style="text-align: center;">0.7942</td>
+        <td style="text-align: center;">0.0</td>
     </tr>
     <tr>
         <td>130M</td>
-        <td class="center-text">0.9925</td>
-        <td class="center-text">2e-76</td>
-        <td class="center-text">0.9409</td>
-        <td class="center-text">9e-37</td>
-        <td class="center-text">0.8698</td>
-        <td class="center-text">0.0</td>
-        <td class="center-text">0.6830</td>
-        <td class="center-text">0.0</td>
+        <td style="text-align: center;">0.9925</td>
+        <td style="text-align: center;">2e-76</td>
+        <td style="text-align: center;">0.9409</td>
+        <td style="text-align: center;">9e-37</td>
+        <td style="text-align: center;">0.8698</td>
+        <td style="text-align: center;">0.0</td>
+        <td style="text-align: center;">0.6830</td>
+        <td style="text-align: center;">0.0</td>
     </tr>
     <tr>
         <td>350M</td>
-        <td class="center-text">0.9770</td>
-        <td class="center-text">3e-113</td>
-        <td class="center-text">0.8848</td>
-        <td class="center-text">5e-65</td>
-        <td class="center-text">0.9091</td>
-        <td class="center-text">0.0</td>
-        <td class="center-text">0.7400</td>
-        <td class="center-text">0.0</td>
+        <td style="text-align: center;">0.9770</td>
+        <td style="text-align: center;">3e-113</td>
+        <td style="text-align: center;">0.8848</td>
+        <td style="text-align: center;">5e-65</td>
+        <td style="text-align: center;">0.9091</td>
+        <td style="text-align: center;">0.0</td>
+        <td style="text-align: center;">0.7400</td>
+        <td style="text-align: center;">0.0</td>
     </tr>
     <tr>
         <td>1B</td>
-        <td class="center-text">0.9469</td>
-        <td class="center-text">1e-83</td>
-        <td class="center-text">0.8249</td>
-        <td class="center-text">1e-56</td>
-        <td class="center-text">0.8331</td>
-        <td class="center-text">0.0</td>
-        <td class="center-text">0.6513</td>
-        <td class="center-text">0.0</td>
+        <td style="text-align: center;">0.9469</td>
+        <td style="text-align: center;">1e-83</td>
+        <td style="text-align: center;">0.8249</td>
+        <td style="text-align: center;">1e-56</td>
+        <td style="text-align: center;">0.8331</td>
+        <td style="text-align: center;">0.0</td>
+        <td style="text-align: center;">0.6513</td>
+        <td style="text-align: center;">0.0</td>
     </tr>
 </table>
+
 
 Spearman and Kendall correlation coefficients range from -1 to +1, +1 signifies a perfect positive correlation, and -1 signifies a perfect negative correlation. Generally, a p-value below 0.05 suggests that a significant correlation exists. As shown in the above table, both Spearman and Kendall correlation coefficients indicate a strong positive relationship at the matrix and column levels across all sizes of the LLaMA models, with all p-values below 0.05. 
 
