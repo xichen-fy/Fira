@@ -146,18 +146,89 @@ CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
     --lora_weights './result/fira' | tee -a './result/fira/boolq.txt'
 ```
 
-## Quantitative analysis of scaling factor similarity
+## Further Analysis of Scaling Factor Similarities 
 
-In our paper, we define the scaling factor $\phi(R)=\frac{||\psi(R)||}{||R||}$, where $R$ is the raw gradient varying in size with rank, and $\psi(R)$ is the gradient corrected by the gradient correction function $\psi$ of the adaptive optimizers (e.g., Adam).
+<!-- In our paper, we define the scaling factor $\phi(R)=\frac{||\psi(R)||}{||R||}$, where $R$ is the raw gradient varying in size with rank, and $\psi(R)$ is the gradient corrected by the gradient correction function $\psi$ of the adaptive optimizers (e.g., Adam).
 
 Based on it, we observe an interesting phenomenon during LLM training: the scaling factor remains similar from low-rank to full-rank training. As illustrated in the following figure, if we sort the weight matrices by their average scaling factors, we can obtain a similar rank order.
-![](./assests/scaling_factors.png)
-To further substantiate our findings, we conduct quantitative analysis of the above similarity across LLaMA models ranging from 60M to 1B at matrix and column level. We train these models and assess the similarity of scaling factors averaged over 10,000 steps using Kendall’s Tau and Spearman Rank correlation coefficients.
-![](./assests/similiar.png)
+![](./assests/scaling_factors.png) -->
+To further explain the effectiveness of our norm-based scaling method, we conduct extensive quantitative analysis of scaling factor similarities between low-rank and full-rank LLMs training. Specifically, we assess scaling factor similarities at both matrix and column level for pre-training LLaMA models ranging from 60M to 1B, averaged over 10,000 steps.
+<!-- <div align="center">
+<img src="./assests/similiar.png" width="80%">
+</div> -->
+<table style="margin: auto; text-align: center; width: 90%">
+    <tr>
+        <th rowspan="3" style="font-weight: normal;">Size</th>
+        <th colspan="4" style="font-weight: normal;">Matrix Level</th>
+        <th colspan="4" style="font-weight: normal;">Column Level</th>
+    </tr>
+    <tr>
+        <th colspan="2" style="font-weight: normal;">Spearman</th>
+        <th colspan="2" style="font-weight: normal;">Kendall</th>
+        <th colspan="2" style="font-weight: normal;">Spearman</th>
+        <th colspan="2" style="font-weight: normal;">Kendall</th>
+    </tr>
+    <tr>
+        <th style="font-weight: normal;">Coefficient</th>
+        <th style="font-weight: normal;">P-value</th>
+        <th style="font-weight: normal;">Coefficient</th>
+        <th style="font-weight: normal;">P-value</th>
+        <th style="font-weight: normal;">Coefficient</th>
+        <th style="font-weight: normal;">P-value</th>
+        <th style="font-weight: normal;">Coefficient</th>
+        <th style="font-weight: normal;">P-value</th>
+    </tr>
+    <tr>
+        <td>60M</td>
+        <td>0.9972</td>
+        <td>1.70e-62</td>
+        <td>0.9662</td>
+        <td>7.25e-26</td>
+        <td>0.9372</td>
+        <td>0.0</td>
+        <td>0.7942</td>
+        <td>0.0</td>
+    </tr>
+    <tr>
+        <td>130M</td>
+        <td>0.9925</td>
+        <td>1.50e-76</td>
+        <td>0.9409</td>
+        <td>8.57e-37</td>
+        <td>0.8698</td>
+        <td>0.0</td>
+        <td>0.6830</td>
+        <td>0.0</td>
+    </tr>
+    <tr>
+        <td>350M</td>
+        <td>0.9770</td>
+        <td>2.76e-113</td>
+        <td>0.8848</td>
+        <td>5.36e-65</td>
+        <td>0.9091</td>
+        <td>0.0</td>
+        <td>0.7400</td>
+        <td>0.0</td>
+    </tr>
+    <tr>
+        <td>1B</td>
+        <td>0.9469</td>
+        <td>1.04e-83</td>
+        <td>0.8249</td>
+        <td>9.77e-57</td>
+        <td>0.8331</td>
+        <td>0.0</td>
+        <td>0.6513</td>
+        <td>0.0</td>
+    </tr>
+</table>
+
 Spearman and Kendall correlation coefficients range from -1 to +1, +1 signifies a perfect positive correlation, and -1 signifies a perfect negative correlation. Generally, a p-value below 0.05 suggests that a significant correlation exists. As shown in the above table, both Spearman and Kendall correlation coefficients indicate a strong positive relationship at the matrix and column levels across all sizes of the LLaMA models, with all p-values falling 0.05.
 
 Thus, it is likely that the observed behavior is an inherent feature of LLM training, manifesting across a broad range of scenarios. This insight provides a robust experimental basis for our proposed norm-based scaling in Fira and helps explain its effectiveness.
 
+<!-- Code can be found in `./similarity`. -->
 ## Acknowledgement
 This implementation is based on code from several repositories.
 * [Galore](https://github.com/jiaweizzhao/GaLore)
