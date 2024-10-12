@@ -155,6 +155,7 @@ Based on it, we observe an interesting phenomenon during LLM training: the scali
 To further substantiate our findings, we conduct quantitative analysis of the above similarity across LLaMA models ranging from 60M to 1B at matrix and column level. We train these models and assess the similarity of scaling factors averaged over 10,000 steps using Kendall’s Tau and Spearman Rank correlation coefficients.
 ![](./assests/similiar.png)
 Spearman and Kendall correlation coefficients range from -1 to +1, +1 signifies a perfect positive correlation, and -1 signifies a perfect negative correlation. Generally, a p-value below 0.05 suggests that a significant correlation exists. As shown in the above table, both Spearman and Kendall correlation coefficients indicate a strong positive relationship at the matrix and column levels across all sizes of the LLaMA models, with all p-values falling 0.05.
+
 Thus, it is likely that the observed behavior is an inherent feature of LLM training, manifesting across a broad range of scenarios. This insight provides a robust experimental basis for our proposed norm-based scaling in Fira and helps explain its effectiveness.
 
 ## Acknowledgement
