@@ -150,8 +150,12 @@ CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
 
 
 To further substantiate our findings of the scaling factor, we conduct more quantitative analysis of scaling factor similarities between low-rank and full-rank LLMs training. Specifically, we assess scaling factor similarities at both matrix and column level for pre-training LLaMA models ranging from 60M to 1B, averaged over 10,000 steps.
-
-<table style="margin: auto; text-align: center; width: 90%">
+<style>
+    .center-text {
+        text-align: center; /* Ensures text is centered in the cell */
+    }
+</style>
+<table style="margin: auto; width: 90%">
     <tr>
         <th rowspan="3" style="font-weight: normal;">Size</th>
         <th colspan="4" style="font-weight: normal;">Matrix Level</th>
@@ -175,47 +179,47 @@ To further substantiate our findings of the scaling factor, we conduct more quan
     </tr>
     <tr>
         <td>60M</td>
-        <td>0.9972</td>
-        <td>2e-62</td>
-        <td>0.9662</td>
-        <td>7e-26</td>
-        <td>0.9372</td>
-        <td>0.0</td>
-        <td>0.7942</td>
-        <td>0.0</td>
+        <td class="center-text">0.9972</td>
+        <td class="center-text">2e-62</td>
+        <td class="center-text">0.9662</td>
+        <td class="center-text">7e-26</td>
+        <td class="center-text">0.9372</td>
+        <td class="center-text">0.0</td>
+        <td class="center-text">0.7942</td>
+        <td class="center-text">0.0</td>
     </tr>
     <tr>
         <td>130M</td>
-        <td>0.9925</td>
-        <td>2e-76</td>
-        <td>0.9409</td>
-        <td>9e-37</td>
-        <td>0.8698</td>
-        <td>0.0</td>
-        <td>0.6830</td>
-        <td>0.0</td>
+        <td class="center-text">0.9925</td>
+        <td class="center-text">2e-76</td>
+        <td class="center-text">0.9409</td>
+        <td class="center-text">9e-37</td>
+        <td class="center-text">0.8698</td>
+        <td class="center-text">0.0</td>
+        <td class="center-text">0.6830</td>
+        <td class="center-text">0.0</td>
     </tr>
     <tr>
         <td>350M</td>
-        <td>0.9770</td>
-        <td>3e-113</td>
-        <td>0.8848</td>
-        <td>5e-65</td>
-        <td>0.9091</td>
-        <td>0.0</td>
-        <td>0.7400</td>
-        <td>0.0</td>
+        <td class="center-text">0.9770</td>
+        <td class="center-text">3e-113</td>
+        <td class="center-text">0.8848</td>
+        <td class="center-text">5e-65</td>
+        <td class="center-text">0.9091</td>
+        <td class="center-text">0.0</td>
+        <td class="center-text">0.7400</td>
+        <td class="center-text">0.0</td>
     </tr>
     <tr>
         <td>1B</td>
-        <td>0.9469</td>
-        <td>1e-83</td>
-        <td>0.8249</td>
-        <td>1e-56</td>
-        <td>0.8331</td>
-        <td>0.0</td>
-        <td>0.6513</td>
-        <td>0.0</td>
+        <td class="center-text">0.9469</td>
+        <td class="center-text">1e-83</td>
+        <td class="center-text">0.8249</td>
+        <td class="center-text">1e-56</td>
+        <td class="center-text">0.8331</td>
+        <td class="center-text">0.0</td>
+        <td class="center-text">0.6513</td>
+        <td class="center-text">0.0</td>
     </tr>
 </table>
 
