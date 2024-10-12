@@ -150,11 +150,6 @@ CUDA_VISIBLE_DEVICES=0 python commonsense_evaluate.py \
 
 
 To further substantiate our findings of the scaling factor, we conduct more quantitative analysis of scaling factor similarities between low-rank and full-rank LLMs training. Specifically, we assess scaling factor similarities at both matrix and column level for pre-training LLaMA models ranging from 60M to 1B, averaged over 10,000 steps.
-<style>
-    .center-text {
-        text-align: center; /* Ensures text is centered in the cell */
-    }
-</style>
 <table style="margin: auto; width: 90%">
     <tr>
         <th rowspan="3" style="font-weight: normal;">Size</th>
