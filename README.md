@@ -51,6 +51,16 @@ optimizer = FiraAdamW(param_groups, lr=learning_rate, weight_decay=0.01)
 ```
 Besides, you can modify the learning rate according to different tasks, with a recommended range of $10^{-5}$ to $10^{-2}$.
 
+# Quantitative analysis of scaling factor similarity
+
+In our paper, we define the scaling factor $\phi(R)=\frac{||\psi(R)||}{||R||}$, where $R$ is the raw gradient varying in size with rank, and $\psi(R)$ is the gradient corrected by the gradient correction function $\psi$ of the adaptive optimizers (e.g., Adam).
+
+Based on it, we observe an interesting phenomenon during LLM training: the scaling factor remains similar from low-rank to full-rank training. As illustrated in the following figure, if we sort the weight matrices by their average scaling factors, we can obtain a similar rank order.
+![](./assests/scaling_factors.png)
+To further substantiate our findings, we conduct quantitative analysis of the above similarity across LLaMA models ranging from 60M to 1B at matrix and column level. We train these models and assess the similarity of scaling factors averaged over 10,000 steps using Kendall’s Tau and Spearman Rank correlation coefficients.
+![](./assests/similiar.png)
+Spearman and Kendall correlation coefficients range from -1 to +1, +1 signifies a perfect positive correlation, and -1 signifies a perfect negative correlation. Generally, a p-value below 0.05 suggests that a significant correlation exists. As shown in the above table, both Spearman and Kendall correlation coefficients indicate a strong positive relationship at the matrix and column levels across all sizes of the LLaMA models, with all p-values falling 0.05.
+Thus, it is likely that the observed behavior is an inherent feature of LLM training, manifesting across a broad range of scenarios. This insight provides a robust experimental basis for our proposed norm-based scaling in Fira and helps explain its effectiveness.
 
 ## Pre-training LLaMA (60M~7B) on the C4 dataset
 
