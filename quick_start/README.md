@@ -112,7 +112,7 @@ from fira import FiraAdamW, divide_params
 param_groups = divide_params(model, target_modules_list = ["fc"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
-The modules `self.fc1` and `self.fc2` enable low-rank projection because their names contain the substring `fc`, as specified in the `target_modules_list`.
+The modules `self.fc1` and `self.fc2` will enable Fira because their names contain the substring `fc`, as specified in the `target_modules_list`.
 ```bash
 python quick_start.py --optimizer fira_adamw  
 ```
@@ -142,7 +142,7 @@ The `divide_params` function is used to mark certain modules within a model to u
 
 - **Parameters**:
   - `model` (`nn.Module`, optional): The model instance to configure. Defaults to `None`.
-  - `target_modules_list` (`list[str]`, optional): Modules whose names contain any substring in `target_modules_list` will enable low-rank projection, whereas other modules will use full-rank updates. Adapt as necessary for specific module names in the model. Defaults to an empty list.
+  - `target_modules_list` (`list[str]`, optional): Modules whose names contain any substring in `target_modules_list` will enable Fira. Adapt as necessary for specific module names in the model. Defaults to an empty list.
   - `rank` (`int`, optional): The dimension to which model parameters are compressed. Defaults to `8`.
   - `update_proj_gap` (`int`, optional): The interval (in training steps) for updating the gradient projections. Defaults to `200`.
   - `alpha` (`float`, optional): Adjusts the learning rate influence, analogous to LoRA. Defaults to `1.0`.
