@@ -1,8 +1,6 @@
 # Fira: Can We Achieve Full-rank Training of LLMs Under Low-rank Constraint?
 
-[![arXiv](https://img.shields.io/badge/arxiv-2410.01623-b31b1b)](https://arxiv.org/abs/2410.01623) [![blog-cn](https://img.shields.io/badge/%E9%87%8F%E5%AD%90%E4%BD%8D-%E7%AE%80%E4%BB%8B-brightgreen)](https://mp.weixin.qq.com/s/gTj3VAhnJOJbl1_Nqfs0Fw)
-
-
+[![arXiv](https://img.shields.io/badge/arxiv-2410.01623-b31b1b)](https://arxiv.org/abs/2410.01623) [![blog-cn](https://img.shields.io/badge/%E9%87%8F%E5%AD%90%E4%BD%8D-%E7%AE%80%E4%BB%8B-brightgreen)](https://mp.weixin.qq.com/s/gTj3VAhnJOJbl1_Nqfs0Fw) [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-blue)](https://huggingface.co/papers/2410.01623)
 
 
 
