@@ -35,10 +35,10 @@ pip install fira
 
 ```python
 from fira import FiraAdamW, divide_params
-param_groups = divide_params(model, target_modules_list = ["Linear"], rank=8)
+param_groups = divide_params(model, target_modules_list = ["attn", "mlp"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
-
+Modules whose names contain any substring in `target_modules_list` will enable low-rank projection, whereas other modules will use full-rank updates.
 ### Quick Start
 
 We also provide a quick-start tutorial for the Fira optimizer. You can find it in `./quick_start`.

@@ -80,7 +80,7 @@ def main():
 
     model = SimpleNN()
     criterion = nn.CrossEntropyLoss()
-    param_groups = divide_params(model, target_modules_list=["Linear"], rank=8)  # Group parameters
+    param_groups = divide_params(model, target_modules_list = ["fc"], rank=8)  # Group parameters
     if args.optimizer == "fira_adamw":
         optimizer = FiraAdamW(param_groups, lr=0.01)  # Use FiraAdamW optimizer
     elif args.optimizer == "adam":
