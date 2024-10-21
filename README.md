@@ -38,7 +38,7 @@ from fira import FiraAdamW, divide_params
 param_groups = divide_params(model, target_modules_list = ["attn", "mlp"], rank=8)
 optimizer = FiraAdamW(param_groups, lr=learning_rate)
 ```
-Please add the module names that need to enable our Fira in `target_modules_list` (Substrings are acceptable).
+Please add the module names that need to enable our Fira in `target_modules_list` (substrings are acceptable).
 ### Quick Start
 
 We also provide a quick-start tutorial for the Fira optimizer. You can find it in `./quick_start`.
